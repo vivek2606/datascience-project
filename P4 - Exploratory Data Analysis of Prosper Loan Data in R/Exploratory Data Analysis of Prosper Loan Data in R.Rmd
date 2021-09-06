@@ -1,0 +1,12 @@
+---
+title: "P4 - Exploratory Data Analysis of Prosper Loan Data Set"
+author: "Vivek Raj"
+date: "June 28, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+

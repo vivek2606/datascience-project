@@ -1,0 +1,49 @@
+---
+title: "EDA of Diamonds Data Set"
+author: "Vivek Raj"
+date: "August 1, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+```{r diamonds}
+head(diamonds,10)
+
+```
+
+```{r}
+str(diamonds)
+```
+
+```{r}
+ggplot(data = diamonds, aes(price,fill= cut))+
+  scale_fill_brewer(type = 'qual')+
+  geom_histogram()+
+  scale_x_log10()+
+  facet_wrap(~color, ncol=3)
+```
+```{r}
+ggplot(data=diamonds, aes(y=price, x=table, color=cut))+
+  scale_fill_brewer(type = 'qual')+
+  geom_jitter(position = position_jitter(height = 0))+
+  scale_x_continuous(limits = c(50,80), breaks = seq(50,80,2))
+  
+```
+```{r}
+diamonds$vol <- diamonds$x * diamonds$y * diamonds$z
+
+ggplot(diamonds, aes(vol, price, color=clarity))+
+  geom_jitter(position = position_jitter(height =0))+
+  scale_color_brewer(type = 'div')+
+  scale_y_log10()+
+  scale_x_continuous(limits = c(0,quantile(diamonds$vol, 0.95)))
+ 
+```
+
